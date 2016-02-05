@@ -1,7 +1,8 @@
 # Carousel Box Slider
 
+Easily add a box slider to your theme. Fully responsive with horizontal, vertical, and fade modes. Slides can contain images, video, or HTML content. Includes a widget to easily add a box slider in any sidebar or widgetized area.
 Tags: slideshow, slider, slides, slide, images, image, responsive, mobile, jquery, javascript, featured, HTML content
-Requires at least: 4.0
+Requires at least: 4.0 WP version
 
 ## Installation
 Include the folder in your plugins folder or go through `Plugins > Add New > Upload`  *please make sure the file is in a zip format
