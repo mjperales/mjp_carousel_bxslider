@@ -303,9 +303,6 @@ class Tcu_Display_Slider {
 				'adaptive_height' => 'false'
 			);
 
-
-		var_dump($defaults);
-
 		if(  !( $options == false ) ) {
 			// Let's merge our defaults
 			$defaults = array_merge( (array) $defaults, $options );
