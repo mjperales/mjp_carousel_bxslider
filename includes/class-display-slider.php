@@ -14,13 +14,6 @@
 class Tcu_Display_Slider {
 
 	/**
-	 * The post type
-	 *
-	 * @var string
-	 **/
-	public static $post_type = 'tcu_box_slider';
-
-	/**
 	 * Constructor
 	 *
 	 * @return void
@@ -42,7 +35,7 @@ class Tcu_Display_Slider {
 	}
 
 	/**
-	 * Sets up an array on our carousel
+	 * Sets up an array on our carousel object
 	 *
 	 * @param array/object $data The array of data
 	 * @return array
@@ -69,7 +62,7 @@ class Tcu_Display_Slider {
 		// Our default query arguments
 		$defaults = array(
 			'post_status'   => 'publish',
-			'post_type'     => self::$post_type,
+			'post_type'     => Tcu_Create_Slider::$post_type_name,
 			'orderby'       => 'ID',
 			'order'         => 'ASC',
 			'no_found_rows' => true
@@ -125,7 +118,7 @@ class Tcu_Display_Slider {
 		}
 
 		// Check we are using the correct post_type
-		if( $post->post_type != self::$post_type ) {
+		if( $post->post_type != Tcu_Create_Slider::$post_type_name ) {
 			return false;
 		}
 
@@ -305,9 +298,13 @@ class Tcu_Display_Slider {
 				'slide_tran'      => 'horizontal',
 				'speed'           => '500',
 				'auto_controls'   => 'false',
-				'arrows'          => 'false',
+				'auto_hover'    => 'false',
+				'slider_arrows'   => 'false',
 				'adaptive_height' => 'false'
 			);
+
+
+		var_dump($defaults);
 
 		if(  !( $options == false ) ) {
 			// Let's merge our defaults
@@ -325,7 +322,8 @@ class Tcu_Display_Slider {
 						speed: <?php echo $defaults['speed']; ?>,
 						auto: true,
 						autoControls: <?php echo $defaults["auto_controls"]; ?>,
-					 	controls: <?php echo $defaults["arrows"]; ?>,
+						autoHover: <?php echo $defaults["auto_hover"]; ?>,
+					 	controls: <?php echo $defaults["slider_arrows"]; ?>,
 						adaptiveHeight: <?php echo $defaults["adaptive_height"]; ?>,
 						infiniteLoop: true,
 						useCSS: false,

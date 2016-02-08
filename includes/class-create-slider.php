@@ -18,7 +18,7 @@ class Tcu_Create_Slider {
 	 * Post Type Name
 	 *
 	 **/
-	protected $post_type_name = 'tcu_box_slider';
+	public static $post_type_name = 'tcu_box_slider';
 
 	/**
 	 * Constructor
@@ -27,7 +27,7 @@ class Tcu_Create_Slider {
 	 **/
 	public function __construct() {
 
-		if( !post_type_exists( $this->post_type_name ) ) {
+		if( !post_type_exists( self::$post_type_name ) ) {
 			add_action('init', array( &$this, 'register_quote_post_type' ) );
 		}
 
@@ -226,7 +226,7 @@ class Tcu_Create_Slider {
 		}
 
 		// Sanitize user input.
-		$content = wp_kses_post( $_POST['_slider_content_tcu'] );
+		$content = $_POST['_slider_content_tcu'];
 		update_post_meta( $post_id, '_slider_content_tcu', $content );
 	}
 

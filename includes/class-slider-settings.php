@@ -93,6 +93,14 @@ class Tcu_Slider_Settings {
 		);
 
 		add_settings_field(
+			'tcu_carousel_ticker_hover',
+			'Pause slider on hover?',
+			array( $this, 'tcu_auto_hover' ),
+			'tcu_bxslider_carousel',
+			'tcu_carousel_general_settings'
+		);
+
+		add_settings_field(
 			'tcu_carousel_autocontrols_string',
 			'Show auto controls?',
 			array( $this, 'tcu_autocontrol_settings' ),
@@ -172,6 +180,19 @@ class Tcu_Slider_Settings {
 	}
 
 	/**
+	 * Render pause on hover option
+	 *
+	 **/
+	public function tcu_auto_hover() {
+		// get option 'auto_controls' value from the database
+		$options = get_option( 'tcu_carousel_settings' );
+
+		if ( !isset( $options['auto_hover'] ) ) { $options['auto_hover'] = false; }
+			echo '<input name="tcu_carousel_settings[auto_hover]" type="checkbox" value="true" class="code" ' . checked( 'true', $options['auto_hover'], false ) . ' /> True';
+			echo '<p>If checked, slider will pause when mouse hovers over slider.</p>';
+	}
+
+	/**
 	 * Render slide transition duration option
 	 *
 	 **/
@@ -184,7 +205,7 @@ class Tcu_Slider_Settings {
 	}
 
 	/**
-	 * Render slide transition duration option
+	 * Render adaptive height option
 	 *
 	 **/
 	public function tcu_adaptive_height() {
