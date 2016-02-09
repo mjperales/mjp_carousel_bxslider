@@ -298,14 +298,14 @@ class Tcu_Display_Slider {
 				'slide_tran'      => 'horizontal',
 				'speed'           => '500',
 				'auto_controls'   => 'false',
-				'auto_hover'    => 'false',
+				'auto_hover'      => 'false',
 				'slider_arrows'   => 'false',
 				'adaptive_height' => 'false'
 			);
 
 		if(  !( $options == false ) ) {
 			// Let's merge our defaults
-			$defaults = array_merge( (array) $defaults, $options );
+			$defaults = array_merge( (array) $defaults, (array) $options );
 		} ?>
 
 		<script type="text/javascript">

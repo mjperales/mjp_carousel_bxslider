@@ -132,7 +132,16 @@ class Tcu_Carousel_Box_Slider {
 	 *
 	 * @return void
 	 **/
-	public function activate_me() {
+	public static function activate_me() {
+
+		global $wp_version;
+
+		// Deactivate plugin if WP version is below minimum requirement
+		if( version_compare( $wp_version, '4.0', '<' ) ) {
+			deactivate_plugins( plugin_basename( __FILE__ ) );
+			wp_die( __( sprintf( 'Sorry, but your version of WordPress, <strong>%s</strong>, is not supported. The plugin has been deactivated.', $wp_version ) ) );
+			return false;
+		}
 
 		// Flush our rewrites
 		flush_rewrite_rules();
