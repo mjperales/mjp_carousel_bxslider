@@ -164,7 +164,7 @@ class Tcu_Carousel_Box_Slider {
 		// Flush our rewrites
 		flush_rewrite_rules();
 
-		$option_name = 'tcu_carousel_settings';
+		$option_name = Tcu_Slider_Settings::$option_name;
 
 		// delete our settings
 		delete_option( $option_name );

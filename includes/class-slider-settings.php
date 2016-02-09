@@ -14,6 +14,13 @@ if( !defined( 'ABSPATH' ) ) {
 class Tcu_Slider_Settings {
 
 	/**
+	 * Option Name
+	 *
+	 * @var string
+	 **/
+	public static $option_name = 'tcu_carousel_settings';
+
+	/**
 	 * Constructor
 	 *
 	 * @return void
@@ -65,7 +72,7 @@ class Tcu_Slider_Settings {
 
 		register_setting(
 			'tcu_carousel_settings_group',
-			'tcu_carousel_settings',
+			self::$option_name,
 			array( $this, 'validate_slider_settings' )
 		);
 
@@ -141,11 +148,11 @@ class Tcu_Slider_Settings {
 	public function tcu_slide_transition() {
 
 		// get option 'slide_tran' value from the database
-		$options = get_option( 'tcu_carousel_settings' );
+		$options = get_option( self::$option_name );
 
 		// echo the field
 		echo '<p>The default type of transition to use to go from one slide to another one.</p>';
-		echo '<select name="tcu_carousel_settings[slide_tran]">';
+		echo '<select name="' . self::$option_name . '[slide_tran]">';
 		echo '<option value="horizontal"' . selected( $options['slide_tran'], 'horizontal', false ) . '>Horizontal</option>';
 		echo '<option value="vertical"' . selected( $options['slide_tran'], 'vertical', false ) . '>Vertical</option>';
 		echo '<option value="fade"' . selected( $options['slide_tran'], 'fade', false ) . '>Fade</option>';
@@ -159,10 +166,10 @@ class Tcu_Slider_Settings {
 	 **/
 	public function tcu_arrow_settings() {
 		// get option 'slider_arrows' value from the database
-		$options = get_option( 'tcu_carousel_settings' );
+		$options = get_option( self::$option_name );
 
 		if ( !isset( $options['slider_arrows'] ) ) { $options['slider_arrows'] = false; }
-			echo '<input name="tcu_carousel_settings[slider_arrows]" type="checkbox" value="true" class="code" ' . checked( 'true', $options['slider_arrows'], false ) . ' /> True';
+			echo '<input name="' . self::$option_name . '[slider_arrows]" type="checkbox" value="true" class="code" ' . checked( 'true', $options['slider_arrows'], false ) . ' /> True';
 			echo '<p>If checked, "Next" / "Prev" controls will be added</p>';
 	}
 
@@ -172,10 +179,10 @@ class Tcu_Slider_Settings {
 	 **/
 	public function tcu_autocontrol_settings() {
 		// get option 'auto_controls' value from the database
-		$options = get_option( 'tcu_carousel_settings' );
+		$options = get_option( self::$option_name );
 
 		if ( !isset( $options['auto_controls'] ) ) { $options['auto_controls'] = false; }
-			echo '<input name="tcu_carousel_settings[auto_controls]" type="checkbox" value="true" class="code" ' . checked( 'true', $options['auto_controls'], false ) . ' /> True';
+			echo '<input name="' . self::$option_name . '[auto_controls]" type="checkbox" value="true" class="code" ' . checked( 'true', $options['auto_controls'], false ) . ' /> True';
 			echo '<p>If checked, "Start" / "Stop" controls will be added</p>';
 	}
 
@@ -185,10 +192,10 @@ class Tcu_Slider_Settings {
 	 **/
 	public function tcu_auto_hover() {
 		// get option 'auto_controls' value from the database
-		$options = get_option( 'tcu_carousel_settings' );
+		$options = get_option( self::$option_name );
 
 		if ( !isset( $options['auto_hover'] ) ) { $options['auto_hover'] = false; }
-			echo '<input name="tcu_carousel_settings[auto_hover]" type="checkbox" value="true" class="code" ' . checked( 'true', $options['auto_hover'], false ) . ' /> True';
+			echo '<input name="' . self::$option_name . '[auto_hover]" type="checkbox" value="true" class="code" ' . checked( 'true', $options['auto_hover'], false ) . ' /> True';
 			echo '<p>If checked, slider will pause when mouse hovers over slider.</p>';
 	}
 
@@ -198,9 +205,9 @@ class Tcu_Slider_Settings {
 	 **/
 	public function tcu_speed_setting() {
 
-		$options = get_option( 'tcu_carousel_settings' );
+		$options = get_option( self::$option_name );
 
-		echo '<input placeholder="500" id="tcu_carousel_speed_string" type="number" size="15" value="' . esc_attr( $options['speed'] ) . '" name="tcu_carousel_settings[speed]" class="small-text" />';
+		echo '<input placeholder="500" id="tcu_carousel_speed_string" type="number" size="15" value="' . esc_attr( $options['speed'] ) . '" name="' . self::$option_name . '[speed]" class="small-text" />';
 		echo '<p>Slide transition duration (in milliseconds)</p>';
 	}
 
@@ -211,10 +218,10 @@ class Tcu_Slider_Settings {
 	public function tcu_adaptive_height() {
 
 		// get option 'adaptive_height' value from the database
-		$options = get_option( 'tcu_carousel_settings' );
+		$options = get_option( self::$option_name );
 
 		if ( !isset( $options['adaptive_height'] ) ) { $options['adaptive_height'] = false; }
-			echo '<input name="tcu_carousel_settings[adaptive_height]" type="checkbox" value="true" class="code" ' . checked( 'true', $options['adaptive_height'], false ) . ' /> True';
+			echo '<input name="' . self::$option_name . '[adaptive_height]" type="checkbox" value="true" class="code" ' . checked( 'true', $options['adaptive_height'], false ) . ' /> True';
 			echo '<p>Dynamically adjust slider height based on each slide\'s height</p>';
 	}
 
@@ -242,7 +249,7 @@ class Tcu_Slider_Settings {
 	    } // end foreach
 
 	    // Return the array processing any additional functions filtered by this action
-	    return apply_filters( 'tcu_carousel_settings', $output, $input );
+	    return apply_filters( self::$option_name, $output, $input );
 	}
 
 }
