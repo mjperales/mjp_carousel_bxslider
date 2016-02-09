@@ -67,6 +67,13 @@ class Tcu_Carousel_Box_Slider {
 	private $admin_page;
 
 	/**
+	 * Our display class
+	 *
+	 * @var object
+	 */
+	private $display_slider;
+
+	/**
 	 * Constructor
 	 *
 	 * @return void
