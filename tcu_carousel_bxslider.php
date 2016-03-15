@@ -2,7 +2,7 @@
 /*
 	Plugin Name: TCU - Carousel Box Slider
 	Description: Easily add a box slider to your theme. Fully responsive with horizontal, vertical, and fade modes. Slides can contain images, video, or HTML content. Includes a widget to easily add a box slider in any sidebar or widgetized area.
-	Version: 2.0.1
+	Version: 2.0.2
 	Author: Website & Social Media Management
 	Author URI: http://mkc.tcu.edu/web-management.asp
 

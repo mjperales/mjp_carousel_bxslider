@@ -216,7 +216,7 @@ class Tcu_Display_Slider {
 			 * Send shortcode to the editor
 			 */
 
-			function insertCarousel() {
+			var insertCarousel = function() {
 
 			 	var id = jQuery('#tcu-carousel').val();
 

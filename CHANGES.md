@@ -1,3 +1,7 @@
+**v2.0.2 update**
+
+ - fixed function name insertCarousel
+
 **v2.0.1 update**
 
  - Fixed prev/next arrows not showing up
