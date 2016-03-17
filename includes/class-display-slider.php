@@ -230,7 +230,7 @@ class Tcu_Display_Slider {
 
 			 	// close thickbox
 			 	tb_remove();
-			 }
+			 };
 		</script>
 
 		<div id="select-tcu-carousel" style="display: none;">
