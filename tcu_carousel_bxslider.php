@@ -50,7 +50,7 @@ class Tcu_Carousel_Box_Slider {
 	 *
 	 * @var string
 	 **/
-	public static $version = '2.0.1';
+	public static $version = '2.0.2';
 
 	/**
 	 * Our slider object
